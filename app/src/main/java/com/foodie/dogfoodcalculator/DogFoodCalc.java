@@ -2,16 +2,22 @@ package com.foodie.dogfoodcalculator;
 
 import android.content.Intent;
 import android.os.Bundle;
-import android.support.design.widget.FloatingActionButton;
-import android.support.design.widget.Snackbar;
-import android.support.v7.app.AppCompatActivity;
-import android.support.v7.widget.Toolbar;
+//import android.support.design.widget.FloatingActionButton;
+//import android.support.design.widget.Snackbar;
+import androidx.appcompat.app.AppCompatActivity;
+import androidx.appcompat.widget.Toolbar;
 import android.view.View;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TextView;
+
+import com.google.android.gms.ads.AdRequest;
+import com.google.android.gms.ads.AdView;
+import com.google.android.gms.ads.MobileAds;
+import com.google.android.gms.ads.initialization.InitializationStatus;
+import com.google.android.gms.ads.initialization.OnInitializationCompleteListener;
 
 public class DogFoodCalc extends AppCompatActivity {
 
@@ -22,6 +28,7 @@ public class DogFoodCalc extends AppCompatActivity {
     private Button Ready;
     public TextView BuyNum;
     public TextView LeftNum;
+    private AdView bottomAdView;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -50,7 +57,21 @@ public class DogFoodCalc extends AppCompatActivity {
                 calculate(Price.getText().toString(), Tax.getText().toString(), Cash.getText().toString());
             }
         });
+
+        MobileAds.initialize(this, new OnInitializationCompleteListener() {
+            @Override
+            public void onInitializationComplete(InitializationStatus initializationStatus) {
+
+
+            }
+
+        });
+        bottomAdView = findViewById(R.id.bottomAdView);
+        AdRequest adRequest = new AdRequest.Builder().build();
+        bottomAdView.loadAd(adRequest);
     }
+
+
     private void calculate(String pr, String tx, String csh){
         if (!(pr.equals("") || tx.equals("") || csh.equals(""))){
             float numP = Float.parseFloat(pr);

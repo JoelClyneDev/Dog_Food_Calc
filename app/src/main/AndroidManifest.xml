@@ -9,6 +9,9 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
+        <meta-data
+            android:name="com.google.android.gms.ads.APPLICATION_ID"
+            android:value="ca-app-pub-4550446272112759~7282590152"/>
         <activity android:name="DogFoodCalc">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
@@ -16,13 +19,14 @@
             </intent-filter>
 
         </activity>
-        <activity android:theme="@style/AppTheme.color_change"
+        <activity
+            android:theme="@style/AppTheme.color_change"
             android:name=".SecondActivity"
             >
 
         </activity>
 
-        <activity android:name=".RetryScreen" />
+        <activity android:name="RetryScreen" />
     </application>
 
 </manifest>
