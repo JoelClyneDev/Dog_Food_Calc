@@ -21,8 +21,8 @@
             >
 
         </activity>
-        <activity android:name=".RetryScreen">1</activity>
-            />
+
+        <activity android:name=".RetryScreen" />
     </application>
 
 </manifest>

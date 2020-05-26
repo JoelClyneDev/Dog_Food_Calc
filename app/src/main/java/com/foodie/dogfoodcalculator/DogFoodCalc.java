@@ -52,25 +52,29 @@ public class DogFoodCalc extends AppCompatActivity {
         });
     }
     private void calculate(String pr, String tx, String csh){
-
-        float numP = Float.parseFloat(pr);
-        float numT = Float.parseFloat(tx);
-        float numC = Float.parseFloat(csh);
-        float cashAfterTax = numC - numC * numT;
-        float ttlFood = cashAfterTax / numP;
-        float monLeft = cashAfterTax % numP;
-        String srMonLeft = Float.toString(monLeft);
-        String srTtlFood = Float.toString(ttlFood);
-        String ghostTax = Float.toString(numT);
-        String ghostPrice = Float.toString(numP);
-        String ghostCash = Float.toString(numC);
-        Intent intent = new Intent(DogFoodCalc.this, SecondActivity.class);
-        intent.putExtra("srMonLeft", srMonLeft);
-        intent.putExtra("srTtlFood", srTtlFood);
-        intent.putExtra("ghostTax", ghostTax);
-        intent.putExtra("ghostPrice", ghostPrice);
-        intent.putExtra("ghostCash", ghostCash);
-        startActivity(intent);
+        if (!(pr.equals("") || tx.equals("") || csh.equals(""))){
+            float numP = Float.parseFloat(pr);
+            float numT = Float.parseFloat(tx);
+            float numC = Float.parseFloat(csh);
+            float cashAfterTax = (numC - numC * numT);
+            cashAfterTax = (float) (Math.floor(cashAfterTax * 100.0) / 100.0);
+            int ttlFood = (int) (cashAfterTax / numP);
+            ttlFood = (int) (Math.floor(ttlFood));
+            float monLeft = cashAfterTax % numP;
+            monLeft = (float) (Math.floor(monLeft * 100.0) / 100.0);
+            String srMonLeft = Float.toString(monLeft);
+            String srTtlFood = Integer.toString(ttlFood);
+            String ghostTax = Float.toString(numT);
+            String ghostPrice = Float.toString(numP);
+            String ghostCash = Float.toString(numC);
+            Intent intent = new Intent(DogFoodCalc.this, SecondActivity.class);
+            intent.putExtra("srMonLeft", srMonLeft);
+            intent.putExtra("srTtlFood", srTtlFood);
+            intent.putExtra("ghostTax", ghostTax);
+            intent.putExtra("ghostPrice", ghostPrice);
+            intent.putExtra("ghostCash", ghostCash);
+            startActivity(intent);
+        }
     }
 
 }
