@@ -75,7 +75,7 @@ public class DogFoodCalc extends AppCompatActivity {
     private void calculate(String pr, String tx, String csh){
         if (!(pr.equals("") || tx.equals("") || csh.equals(""))){
             float numP = Float.parseFloat(pr);
-            float numT = Float.parseFloat(tx);
+            float numT = (Float.parseFloat(tx) / 100);
             float numC = Float.parseFloat(csh);
             float cashAfterTax = (numC - numC * numT);
             cashAfterTax = (float) (Math.floor(cashAfterTax * 100.0) / 100.0);

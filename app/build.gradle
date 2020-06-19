@@ -3,6 +3,20 @@ apply plugin: 'com.google.gms.google-services'
 
 
 android {
+    signingConfigs {
+        debug {
+            storeFile file('G:\\Android Programs\\Android_Keystore\\ReversoBudgeterKeyStore.jks')
+            storePassword '0lQ7e37H9L10EOGVRQmn'
+            keyAlias = 'v1 release'
+            keyPassword 'DgWQjZMQYjMAiem5HOGs'
+        }
+        config {
+            storeFile file('G:\\Android Programs\\Android_Keystore\\ReversoBudgeterKeyStore.jks')
+            storePassword '0lQ7e37H9L10EOGVRQmn'
+            keyPassword 'DgWQjZMQYjMAiem5HOGs'
+            keyAlias = 'v1Password'
+        }
+    }
     compileSdkVersion 29
     defaultConfig {
         applicationId "com.JCTechApps.ReversoBudgeter"
@@ -16,9 +30,20 @@ android {
         release {
             minifyEnabled false
             proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
+            debuggable = true
+            signingConfig signingConfigs.config
         }
     }
 }
+
+/*
+{
+        storeFile file('G:\\Android Programs\\Android_Keystore\\ReversoBudgeterKeyStore.jks')
+            storePassword '0lQ7e37H9L10EOGVRQmn'
+            keyAlias = 'v1_release'
+            keyPassword 'DgWQjZMQYjMAiem5HOGs'
+        }
+ */
 
 dependencies {
     implementation fileTree(dir: 'libs', include: ['*.jar'])

@@ -48,7 +48,8 @@ public class RetryScreen extends  AppCompatActivity{
 
     private void recalculate(String amt, Float csh, Float tx, Float pr, Float cc) {
         float left = Float.parseFloat(amt);
-        float leftWithTax = cc - (pr * left + pr * left * tx);
+        float leftWithTax = (cc - (pr * left + pr * left * tx));
+
 
         //double withTax = (double)leftWithTax;
        // double csh2 = (double)csh;
@@ -57,16 +58,22 @@ public class RetryScreen extends  AppCompatActivity{
 
        //convert float to double for rounding down (makes float a string first, then parses the string as a double, then reversing it after math.floor rounds it to make it a float
         //then multiply by 100d for 2 decimal place precision, check the placing of the 100d's https://stackoverflow.com/questions/153724/how-to-round-a-number-to-n-decimal-places-in-java
-        double rounding = (Math.floor((Double.parseDouble(new Float(leftWithTax).toString())) * 100d)/100d);
-        float calcDone= Float.parseFloat(new Double(rounding).toString());
+        double rounding = 0;
+        float calcDone = 0;
+        if (leftWithTax >= 0){
+            rounding = (Math.floor((Double.parseDouble(Float.valueOf(leftWithTax).toString())) * 100d)/100d);
+            calcDone = Float.parseFloat(Double.valueOf(rounding).toString());
+            String newMonAftCalc = Float.toString(calcDone);
+            String strTax = Float.toString(tx * 100);
+            Intent intent2 = new Intent(RetryScreen.this, DogFoodCalc.class);
+            //intent2.putExtra("newMonAftCalc", newMonAftCalc);
+            intent2.putExtra("test", newMonAftCalc);
+            intent2.putExtra("newTax", strTax);
+            startActivity(intent2);
+        }
+
 
 //it works but i rounded to the lower whole number and not to 2 decimal places, ill save it bcs its good to know tho
-        String newMonAftCalc = Float.toString(calcDone);
-        String strTax = Float.toString(tx);
-        Intent intent2 = new Intent(RetryScreen.this, DogFoodCalc.class);
-        //intent2.putExtra("newMonAftCalc", newMonAftCalc);
-        intent2.putExtra("test", newMonAftCalc);
-        intent2.putExtra("newTax", strTax);
-        startActivity(intent2);
+
     }
 }

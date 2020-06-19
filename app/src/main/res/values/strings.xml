@@ -1,12 +1,14 @@
 <resources>
     <string name="app_name">Reverse Shopping Budget</string>
     <string name="action_settings">Settings</string>
-    <string name="enter_to_calculate_food_string">Enter to Calculate Purchase Amount</string>
+    <string name="enter_to_calculate_food_string">Enter to calculate purchase amount</string>
     <string name="food_price">Item Price</string>
-    <string name="finish_screen_message_buy_this">Buy This Many Items</string>
+    <string name="finish_screen_message_buy_this">Buy this many items</string>
     <string name="default_buy_this">" "</string>
-    <string name="finish_screen_you_have">You Have This Much Left</string>
+    <string name="finish_screen_you_have">You have this much left</string>
     <string name="yes">Yes</string>
     <string name="no">No</string>
-    <string name="finish_screen_enough">Is There Enough?</string>
+    <string name="finish_screen_enough">Is there enough?</string>
+    <string name="tax_percent">Tax %</string>
+    <string name="how_many_items_were_there">How many items were there?</string>
 </resources>
