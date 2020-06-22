@@ -10,6 +10,7 @@
         <item name="android:textColorHint">@color/white</item>
         <item name="android:textColor">@color/white</item>
         <item name="android:textSize">20sp</item>
+        <item name="android:background">@color/near_black</item>
     </style>
     <style name="AppTheme.color_change">
         <item name="android:textColor">@color/near_black</item>
@@ -23,9 +24,11 @@
     <style name="AppTheme.PopupOverlay" parent="ThemeOverlay.AppCompat.Light" />
 
     //style for the popup window
-    <style name="AppTheme.NewInfoPopup">
+    <style name="AppTheme.NewInfoPopup" parent="AppTheme">
         <item name="android:windowIsTranslucent">true</item>
         <item name="android:windowCloseOnTouchOutside">true</item>
+
+
     </style>
 
 </resources>
